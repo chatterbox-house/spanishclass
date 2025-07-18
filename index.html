@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Classroom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #5a7cff;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --info: #7209b7;
+            --text: #2b2d42;
+            --text-light: #4a4d6b;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --dark-bg: #1a1a2e;
+            --dark-card: #16213e;
+            --dark-text: #e6e6e6;
+            --dark-text-light: #b8b8b8;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100vw;
+            padding: 20px;
+            font-size: 16px;
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+        
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            text-align: center;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .container {
+            background-color: var(--dark-card);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 50px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+        
+        body.dark-mode .header {
+            color: var(--accent);
+        }
+        
+        .language-options {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .language-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 30px;
+            font-size: 2rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 4px solid transparent;
+        }
+        
+        .language-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
+        }
+        
+        .language-btn:active {
+            transform: translateY(0);
+        }
+        
+        body.dark-mode .language-btn {
+            background-color: var(--accent);
+        }
+        
+        body.dark-mode .language-btn:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .language-btn .flag {
+            font-size: 3rem;
+            margin-right: 20px;
+        }
+        
+        .night-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--dark);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .night-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        body.dark-mode .night-mode-toggle {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+            
+            .language-btn {
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+            
+            .language-btn .flag {
+                font-size: 2rem;
+                margin-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="night-mode-toggle" id="nightModeToggle">🌙</button>
+    <div class="container">
+        <h1 class="header">SPANISH CLASSROOM</h1>
+        
+        <div class="language-options">
+            <a href="spanish.html" class="language-btn">
+                <span class="flag">🇬🇧</span>
+                <span>English Version</span>
+            </a>
+            
+            <a href="supeingo.html" class="language-btn">
+                <span class="flag">🇯🇵</span>
+                <span>日本語版</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let isNightMode = false;
+        const nightModeToggle = document.getElementById('nightModeToggle');
+        
+        function toggleNightMode() {
+            isNightMode = !isNightMode;
+            document.body.classList.toggle('dark-mode', isNightMode);
+            nightModeToggle.textContent = isNightMode ? '☀️' : '🌙';
+            
+            // Save preference to localStorage
+            localStorage.setItem('nightMode', isNightMode);
+        }
+        
+        // Initialize night mode from saved preference
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedNightMode = localStorage.getItem('nightMode') === 'true';
+            if (savedNightMode) {
+                isNightMode = true;
+                document.body.classList.add('dark-mode');
+                nightModeToggle.textContent = '☀️';
+            }
+            
+            nightModeToggle.addEventListener('click', toggleNightMode);
+        });
+    </script>
+</body>
+</html>
