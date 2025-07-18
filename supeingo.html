@@ -925,9 +925,34 @@
         .japanese-font {
             font-family: 'Noto Sans JP', sans-serif;
         }
+.back-btn {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+body.dark-mode .back-btn {
+    background-color: var(--accent);
+}
     </style>
 </head>
 <body>
+<a href="index.html" class="back-btn japanese-font">← 戻る</a>
     <button class="night-mode-toggle" id="nightModeToggle">🌙</button>
     <div class="container" id="mainContainer">
         <div class="header japanese-font">スペイン語チャットボックス</div>
